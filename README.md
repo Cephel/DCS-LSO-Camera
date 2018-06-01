@@ -1,4 +1,5 @@
 # DCS LSO Camera
+A picture speaks more than a thousand words. Click on the image to see all the detail:
 ![Preview](https://i.imgur.com/7lb8GO0.png)
 
 ## Usage
