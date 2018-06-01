@@ -3,7 +3,7 @@ A picture speaks more than a thousand words. Click on the image to see all the d
 ![Preview](https://i.imgur.com/7lb8GO0.png)
 
 ## Usage
-- Download the latest release [here](https://github.com/Cephel/DCS-LSO-Camera/releases/latest).
+- **Download the latest release [here](https://github.com/Cephel/DCS-LSO-Camera/releases/latest)**.
 - No install required. Just run the executable.
 - If you don't trust the bundled executable, you can download and install [AutoHotkey](https://autohotkey.com/) yourself and run the script directly.
 
@@ -16,10 +16,12 @@ A picture speaks more than a thousand words. Click on the image to see all the d
 - (Nonfunctional) unknown bottom left quadrant value. If you know what this is for in the real camera, hit me up with a message.
 
 ## Parameters
-Since the script doesn't extract any data from DCS, you have to set up some values yourself.
+Since the script doesn't extract any data from DCS, you have to set up some values yourself. You can do this via the command line:
+
 ```
 overlay.exe [wind speed](0-999) [white text](1|0) [carrier ID](0-99)
 ```
+
 - [wind speed] is a number indicating the wind speed across the deck, assumed to be aligned with the center line. Example: `overlay.exe 51`.
 - [white text] is a setting to change the text color from black to white. Example: `overlay.exe 51 1`.
 - [carrier ID] is a number indicating the carrier ID, 74 for the Stennis by default. Example: `overlay.exe 51 1 33`.
