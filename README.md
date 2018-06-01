@@ -1,5 +1,5 @@
 # DCS LSO Camera
-Add description here
+![Preview](https://i.imgur.com/7lb8GO0.png)
 
 ## Usage
 - Download the latest release [here](https://github.com/Cephel/DCS-LSO-Camera/releases/latest).
