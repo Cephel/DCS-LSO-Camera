@@ -1,13 +1,13 @@
 #SingleInstance, force
 
-; Options
+; Launch parameters
 ; Wind setting
 pWindspeed := 00
 if(A_Args.Length() >= 1)
 {
 	pWindspeed := A_Args[1]
 }
-; White/Black
+; White/Black text
 pWhiteText := false
 if(A_Args.Length() >= 2)
 {
@@ -20,43 +20,69 @@ if(A_Args.Length() >= 3)
 	pCarrierNumber := A_Args[3]
 }
 
-Gui, Show, x0 y0 w%A_ScreenWidth% h%A_ScreenHeight%, Overlay
+
+; Set up screen dimensions
+; vScreenWidth := A_ScreenWidth
+; vScreenHeight := A_ScreenHeight
+vScreenWidth := 1280
+vScreenHeight := 720
+
+;Gui, Show, x0 y0 w%A_ScreenWidth% h%A_ScreenHeight%, Overlay
+Gui, Show, x0 y0 w%vScreenWidth% h%vScreenHeight%, Overlay
 Gui, +AlwaysOnTop
 
-; Text color
-vTextCol := cFFFFFF
-
 ; Overlay
-Gui, Add, Picture, x0 y0 w%A_ScreenWidth% h%A_ScreenHeight%, overlay.png
+Gui, Add, Picture, x0 y0 w%vScreenWidth% h%vScreenHeight%, overlay.png
 
-; Time and date
+; Text color from parameters
+vTextColor := cBlack
 if(pWhiteText == 1)
 {
-	GUi,Font, s48 q3 cWhite, Terminal
-}
-else
-{
-	Gui, Font, s48 q3, Terminal
+	vTextColor := cWhite
 }
 
-Gui, Add, Text, x480 y48 vDateText, ##-##-##
-Gui, Add, Text, x480 y120 vTimeText, --:--:--
+; Lower font size if resolution is smaller than 1080p
+vTextSize := 48
+if(vScreenHeight < 1080)
+{
+	vTextSize := 36
+}
+; Increase font size if resolution is bigger or equal to 1440p
+if(vScreenHeight >= 1440)
+{
+	vTextSize := 60
+}
+
+Gui, font, s%vTextSize% q3 c%vTextColor%, Terminal
+
+vLeftAnchor := vScreenWidth / 4
+; Top right position needs space for 9 characters and is right justified
+vRightAnchor := ((vScreenWidth / 2) + (vScreenWidth / 4) - (vTextSize * 9))
+
+; Date and time
+vTextSizeThree := vTextSize * 3
+vTextSizeNine := vTextSize * 9
+Gui, Add, Text, x%vLeftAnchor% y%vTextSize% vDateText, ##-##-##
+Gui, Add, Text, x%vLeftAnchor% y%vTextSizeThree% vTimeText, --:--:--
 
 ; Carrier ID and wind speed
-Gui, Add, Text, x1008 y48 w432 Right, C   %pCarrierNumber%
-Gui, Add, Text, x1008 y120 w336 Right, %pWindspeed%
+vTextSizeSeven := vTextSize * 7
+Gui, Add, Text, x%vRightAnchor% y%vTextSize% w%vTextSizeNine% Right, C   %pCarrierNumber%
+Gui, Add, Text, x%vRightAnchor% y%vTextSizeThree% w%vTextSizeSeven% Right, %pWindspeed%
 
 ; Distance and time to trap (nonfunctional)
-GUi, Add, Text, x1008 y960, 00000  00
+vBottomAnchor := vScreenHeight - (vTextSize * 2)
+GUi, Add, Text, x%vRightAnchor% y%vBottomAnchor% w%vTextSizeNine% Right, 00000  00
 
 ; Unknown lower left quadrant value (nonfunctional)
-Gui, Add, Text, x480 y960, 000
+Gui, Add, Text, x%vLeftAnchor% y%vBottomAnchor%, 000
 
 ; Transparency
 Gui, Color, 001100
 WinSet, TransColor, 001100, A
 Gui, -Caption
 
+; Kick off the clock function
 SetTimer, Time_Tick, 1000
 return
 

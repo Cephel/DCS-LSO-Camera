@@ -27,6 +27,3 @@ overlay.exe [wind speed](0-999) [white text](1|0) [carrier ID](0-99)
 - [carrier ID] is a number indicating the carrier ID, 74 for the Stennis by default. Example: `overlay.exe 51 1 33`.
 
 Note: You can only omit options at the end. You have to add all previous ones. For example `overlay.exe 1` to set just the text color to white will not work.
-
-## Known issues
-- Resolutions other than 1080p do not work correctly right now.
