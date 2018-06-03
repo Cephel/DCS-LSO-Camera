@@ -58,15 +58,16 @@ vLeftAnchor := vScreenWidth / 4
 vRightAnchor := ((vScreenWidth / 2) + (vScreenWidth / 4) - (vTextSize * 9))
 
 ; Date and time
-vTextSizeThree := vTextSize * 3
+vTopAnchor := vTextSize / 2
+vTextSpacing := vTopAnchor + vTextSize * 1.5
 vTextSizeNine := vTextSize * 9
-Gui, Add, Text, x%vLeftAnchor% y%vTextSize% vDateText, ##-##-##
-Gui, Add, Text, x%vLeftAnchor% y%vTextSizeThree% vTimeText, --:--:--
+Gui, Add, Text, x%vLeftAnchor% y%vTopAnchor% vDateText, ##-##-##
+Gui, Add, Text, x%vLeftAnchor% y%vTextSpacing% vTimeText, --:--:--
 
 ; Carrier ID and wind speed
 vTextSizeSeven := vTextSize * 7
-Gui, Add, Text, x%vRightAnchor% y%vTextSize% w%vTextSizeNine% Right, C   %pCarrierNumber%
-Gui, Add, Text, x%vRightAnchor% y%vTextSizeThree% w%vTextSizeSeven% Right, %pWindspeed%
+Gui, Add, Text, x%vRightAnchor% y%vTopAnchor% w%vTextSizeNine% Right, C   %pCarrierNumber%
+Gui, Add, Text, x%vRightAnchor% y%vTextSpacing% w%vTextSizeSeven% Right, %pWindspeed%
 
 ; Distance and time to trap (nonfunctional)
 vBottomAnchor := vScreenHeight - (vTextSize * 2)
