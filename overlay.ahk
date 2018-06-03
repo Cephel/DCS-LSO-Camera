@@ -52,7 +52,6 @@ if(vScreenHeight >= 1440)
 }
 
 Gui, font, s%vTextSize% q3 c%vTextColor%, Terminal
-ListVars
 
 vLeftAnchor := vScreenWidth / 4
 ; Top right position needs space for 9 characters and is right justified
