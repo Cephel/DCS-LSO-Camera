@@ -22,10 +22,8 @@ if(A_Args.Length() >= 3)
 
 
 ; Set up screen dimensions
-; vScreenWidth := A_ScreenWidth
-; vScreenHeight := A_ScreenHeight
-vScreenWidth := 1280
-vScreenHeight := 720
+vScreenWidth := A_ScreenWidth
+vScreenHeight := A_ScreenHeight
 
 ;Gui, Show, x0 y0 w%A_ScreenWidth% h%A_ScreenHeight%, Overlay
 Gui, Show, x0 y0 w%vScreenWidth% h%vScreenHeight%, Overlay
