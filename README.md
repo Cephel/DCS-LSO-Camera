@@ -13,7 +13,7 @@ A picture speaks more than a thousand words. Click on the image to see all the d
 - Carrier ID.
 - Wind speed indicator.
 - (Nonfunctional) range and time to trap.
-- (Nonfunctional) unknown bottom left quadrant value. If you know what this is for in the real camera, hit me up with a message.
+- (Nonfunctional) speed of the plane in the groove.
 
 ## Parameters
 Since the script doesn't extract any data from DCS, you have to set up some values yourself. You can do this via the command line:
